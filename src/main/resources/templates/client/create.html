@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>S</h1>
+
+<div th:switch="${client_info}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2>Items</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>fullname</th>
+                <th>location</th>
+                <th>purchased_item</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${client_info}">
+                <td th:text="${item.fullname}"></td>
+                <td th:text="${item.location}"></td>
+                <td th:text="${item.purchased_item}"></td>
+
+                <td><a th:href="@{sendToclient/{id}(id=${item.id})}">Send</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<select name="postomats">
+    <option th:each="country: ${postomat_info}"
+            th:value="${country.name}"
+            th:text="${country.location}"/>
+</select>
+</body>
+</html>

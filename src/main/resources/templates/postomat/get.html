@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:switch="${postomat}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${postomat}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<h1>Salom</h1>
+</body>
+</html>

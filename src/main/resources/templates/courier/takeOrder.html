@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Tanlagan mahsulotingiz</h1>
+<form action="/courier/getItem">
+<select name="postomats">
+    <option th:each="country: ${purchased_item}"
+            th:value="${country.id}"
+            th:text="${country.name}"/>
+</select>
+    <h1>Yettkazib beruvchi kuryerni tanlang</h1>
+    <select name="couriers">
+        <option th:each="coun: ${free_couriers}"
+                th:value="${coun.id}"
+                th:text="${coun.name}"/>
+    </select>
+<br>
+    <input type="submit">
+</form>
+</body>
+</html>
